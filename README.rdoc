@@ -1,0 +1,8 @@
+== Depot
+
+Depot is a rails application that is developed throughout the Agile Web Development with Rails 4 book.
+
+==== Application Idea:
+* Depot application consists of two roles the seller and the buyer
+* Buyer uses Depot to browse the products we have to sell, select some to purchase, and supply the information needed to create an order
+* Seller uses Depot to maintain a list of products to sell, to determine the orders that are awaiting shipping,and to mark orders as shipped
