@@ -3,9 +3,9 @@ Notes A: Basic Setup
 
 Take Away Points:
 ------------------
-* Models are objects that are mapped to a relational database. This where most of the database related business logic occurs. Models are singular (product.rb) and are mapped to the plural database table (Products).
+* Models are objects (singular: product.rb) that are mapped to a relational database (plural: Products). This is where most of the database related business logic occurs.
 
-* Controllers are in charge of routing and communicating with the model. Controllers have a view associated to each of the methods. By default controllers have the following methods: index, show, new, edit, create, update, and destroy. Controllers are plural (products_controller.rb). 
+* Controllers (plural: products_controller.rb) are in charge of routing and communicating with the model. Controllers have a view associated to each of the methods. By default controllers have the following methods: index, show, new, edit, create, update, and destroy.
 
 * Database information is stored in the config/database.yml
 
@@ -13,15 +13,15 @@ Take Away Points:
 
 * db/seeds.rb is used to store a preset database data that other developers can use.
 
-* .erb files used to display html. You can also add ruby code inside of it to generate that said html.
+* .erb files are used to display content. You can have both ruby code and HTML tags inside an .erb files.
 
 * .scss used to store css 
 
-* rails will run any new change inside the .erb and .scss files as soon as you refresh the page (assuming you are not using a cache)
+* rails will run any new change inside the .erb and .scss files as soon as you refresh the page in the developer mode.
 
 * When we use http://localhost:3000/products/new the call the the new method in the controller invoked. At this point the controller renders the the new.html.erb. Inside the new.html.erb we have <%= render 'form' %> thats tells the server to render the _form.html.erb. When we click on the submit form button we go to the create function in controller. At this point the product is saved with the form parameters and we are redirects to the products/1 this corresponds to the show method in the controller. We then render the show.html.erb view.
 
-* app/views/layouts/application.html.erb - Used to create a standard page environment for the entire application. Yield command allows the other views to be ran. All css are loaded here at once
+* app/views/layouts/application.html.erb - Used to create a standard page environment for the entire application. Due to the <%= yield %> call we can run other views. Note: All scss files are loaded here at once as well. 
 
 * Sample controller for Products
 
@@ -59,10 +59,10 @@ link_to 'Edit', edit_product_path(product)
 
 * Allows you to cycle through entries changing their look in the css
 ```ruby
-cycle()
+<tr class="<%= cycle('list_line_odd', 'list_line_even') %>">
 ```
 
-* Truncats a string to the specified number of characters
+* Truncates a string to the specified number of characters
 ```ruby
 truncate(string, num)
 ```
@@ -77,7 +77,7 @@ strip_tags()
 <%= render 'form' %>
 ```
 
-* Renders the <img> tag to the specified file. By default files ar eloaded from public/images
+* Renders the <img> tag to the specified file. By default files are loaded from public/images
 ```ruby
 <%= image_tag "header.png" %> 
 ```
@@ -99,7 +99,7 @@ Commands:
 * Generate a Migration
 > rails generate migration CreateProductsTable [params]
 
-* Apply migration. Rake will look at all the migrations that it haven't been applied yet.
+* Rake will automatically apply all the migrations that haven't been applied to the database yet. 
 > rake db:migrate
 
 * To rollback the database
