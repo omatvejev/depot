@@ -7,9 +7,9 @@ Take Away Points:
 
 * Controllers (plural: products_controller.rb) are in charge of routing and communicating with the model. Controllers have a view associated to each of the methods. By default controllers have the following methods: index, show, new, edit, create, update, and destroy.
 
-* Database information is stored in the config/database.yml
+* Database information is stored in the config/database.yml. There are three different databases one for testing, development and production.
 
-* Migrations are the changes that you want to make to the database. Migrations have a UTC time stamp which determines the order that they should be ran in. You can also apply or remove migrations.
+* Migrations are the changes that you want to make to the database. Migrations are prefixed with a UTC timestamp which determines the order that they will be ran in. You can also apply or remove migrations.
 
 * db/seeds.rb is used to store a preset database data that other developers can use.
 
@@ -47,7 +47,7 @@ Code:
 create!
 ```
 
-* Since app/views/layouts/application.html.erb loads all the css at once this allows to limit the controller to only the controller specific pages
+* Since app/views/layouts/application.html.erb loads all the css at once, this code will only give access to the controller named css class
 ```ruby
 <body class='<%= controller.controller_name %>'>
 ```
@@ -87,7 +87,7 @@ Commands:
 * Creates a new rails application by the name depot 
 > rails new depot 
 
-* Generates the model, view, controller, and migration for our products table. To sum it up this command generates a ready to use code and a migration with the specified attributes.
+* Generates the model, view, controller, and migration for our products table. Essentially, this command generates a ready to use code and a migration with the specified attributes.
 > rails generate scaffold Product title:string description:text image_url:string price:decimal
 
 * Generating a Controller 
