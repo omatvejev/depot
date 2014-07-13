@@ -54,12 +54,12 @@ class ProductTest < ActiveSupport::TestCase
     assert_equal I18n.translate('errors.messages.taken'), product.errors[:title].first
   end
 
-  test "product is not valid with a title longer than 15 characters" do
-    product = Product.new(title: 'A very long title with more than 15 characters',
+  test "product is not valid with a title longer than 30 characters" do
+    product = Product.new(title: 'A very long title with more than 30 characters',
                           description: 'yyy',
                           price: 1,
                           image_url: 'fred.gif')
     assert product.invalid?
-    assert_equal ['must be at most 15 characters'], product.errors[:title]
+    assert_equal ['must be at most 30 characters long'], product.errors[:title]
   end
 end
