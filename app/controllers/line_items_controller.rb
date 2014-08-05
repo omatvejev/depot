@@ -29,7 +29,7 @@ class LineItemsController < ApplicationController
   # POST /line_items.json
   def create
     product = Product.find(params[:product_id])
-    @line_item = @cart.add_product(product.id)
+    @line_item = @cart.add_product(product)
 
     respond_to do |format|
       if @line_item.save
@@ -37,7 +37,7 @@ class LineItemsController < ApplicationController
         format.html { redirect_to @line_item.cart }
         format.json { render action: 'show', status: :created, location: @line_item }
       else
-        format.html { render action: 'new' }
+        format.html { render action: 'new', notice: 'Could not add product to the cart.' }
         format.json { render json: @line_item.errors, status: :unprocessable_entity }
       end
     end
@@ -51,7 +51,7 @@ class LineItemsController < ApplicationController
         format.html { redirect_to @line_item, notice: 'Line item was successfully updated.' }
         format.json { head :no_content }
       else
-        format.html { render action: 'edit' }
+        format.html { render action: 'edit', notice: 'Could not update line item.' }
         format.json { render json: @line_item.errors, status: :unprocessable_entity }
       end
     end
@@ -60,9 +60,10 @@ class LineItemsController < ApplicationController
   # DELETE /line_items/1
   # DELETE /line_items/1.json
   def destroy
+    cart = @line_item.cart
     @line_item.destroy
     respond_to do |format|
-      format.html { redirect_to line_items_url }
+      format.html { redirect_to cart_url(cart), notice: 'Line item was successfully removed.' }
       format.json { head :no_content }
     end
   end
