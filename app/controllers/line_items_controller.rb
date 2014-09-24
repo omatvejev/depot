@@ -35,6 +35,7 @@ class LineItemsController < ApplicationController
       if @line_item.save
         reset_counter
         format.html { redirect_to store_url }
+        format.js
         format.json { render action: 'show', status: :created, location: @line_item }
       else
         format.html { render action: 'new', notice: 'Could not add product to the cart.' }
