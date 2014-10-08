@@ -40,12 +40,11 @@ class LineItemsControllerTest < ActionController::TestCase
   end
 
   test "should destroy line_item" do
-    cart = @line_item.cart
     assert_difference('LineItem.count', -1) do
       delete :destroy, id: @line_item
     end
 
-    assert_redirected_to cart_url(cart)
+    assert_redirected_to line_items_path
   end
 
   test "should create line_items via ajax" do
