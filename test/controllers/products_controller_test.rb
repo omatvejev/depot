@@ -52,18 +52,4 @@ class ProductsControllerTest < ActionController::TestCase
 
     assert_redirected_to products_path
   end
-
-  test "should have a sidebar" do
-    get :index
-    assert_select "div#side"
-
-    get :edit, id: @product
-    assert_select "div#side"
-
-    get :new
-    assert_select "div#side"
-
-    get :show, id: @product
-    assert_select "div#side"
-  end
 end
