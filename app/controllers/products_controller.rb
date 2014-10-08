@@ -31,7 +31,7 @@ class ProductsController < ApplicationController
         format.html { redirect_to @product, notice: 'Product was successfully created.' }
         format.json { render action: 'show', status: :created, location: @product }
       else
-        format.html { render action: 'new', notice: 'Could not create product.' }
+        format.html { render action: 'new' }
         format.json { render json: @product.errors, status: :unprocessable_entity }
       end
     end
@@ -45,7 +45,7 @@ class ProductsController < ApplicationController
         format.html { redirect_to @product, notice: 'Product was successfully updated.' }
         format.json { head :no_content }
       else
-        format.html { render action: 'edit', notice: 'Could not update product.' }
+        format.html { render action: 'edit' }
         format.json { render json: @product.errors, status: :unprocessable_entity }
       end
     end
@@ -56,7 +56,7 @@ class ProductsController < ApplicationController
   def destroy
     @product.destroy
     respond_to do |format|
-      format.html { redirect_to products_url, notice: 'Product was successfully removed.' }
+      format.html { redirect_to products_url }
       format.json { head :no_content }
     end
   end
